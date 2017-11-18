@@ -65,7 +65,7 @@ require("conexao.php");
           </form>
 
         <div class="text-center">
-          <a style="text-decoration: none" class="d-block small mt-3" href="register.html">Cadastre-se</a>
+          <a style="text-decoration: none" class="d-block small mt-3" href="register.php">Cadastre-se</a>
         </div>
       </div>
     </div>
