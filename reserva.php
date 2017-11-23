@@ -7,8 +7,303 @@ $nomeL = $_GET['nomeL'];
 $nomeP = $_GET['nomeP'];
 $end = $_GET['end'];
 $email = $_GET['email'];
-$dataR = $_GET['dataR'];
-$dataE = $_GET['dataE'];
+$dia = date('d');
+$mes = date('m');
+$ano = date('Y');
+
+$dataR = $ano."-".$mes."-".$dia;
+
+if($mes == '1'){
+
+  $diaE = $dia + 7;
+
+  $dataE = $ano."-".$mes."-".$diaE;
+
+    if($diaE > 31){
+
+       $mesE = $mes + 1;
+
+       $dda = $dia / 10;
+
+       $dde = $diaE / 10;
+
+       $nfda=  explode(".", $dda);
+
+       $nfde=  explode(".", $dde);
+
+       $diaEE = $nfda[1] - $nfde[1];
+
+       $dataE = $ano."-".$mesE."-".$diaEE;
+  }
+
+}
+if($mes == '2'){
+
+  $diaE = $dia + 7;
+
+  $dataE = $ano."-".$mes."-".$diaE;
+    if($diaE > 28){
+
+       $mesE = $mes + 1;
+
+       $dda = $dia / 10;
+
+       $dde = $diaE / 10;
+
+       $nfda=  explode(".", $dda);
+
+       $nfde=  explode(".", $dde);
+
+       $diaEE = $nfda[1] - $nfde[1];
+
+       $dataE = $ano."-".$mesE."-".$diaEE;
+
+     }
+
+    }
+if($mes == '3'){
+
+  $diaE = $dia + 7;
+
+  $dataE = $ano."-".$mes."-".$diaE;
+    if($diaE > 31){
+
+       $mesE = $mes + 1;
+
+       $dda = $dia / 10;
+
+       $dde = $diaE / 10;
+
+       $nfda=  explode(".", $dda);
+
+       $nfde=  explode(".", $dde);
+
+       $diaEE = $nfda[1] - $nfde[1];
+
+       $dataE = $ano."-".$mesE."-".$diaEE;
+
+     }
+
+    }
+if($mes == '4'){
+
+  $diaE = $dia + 7;
+
+  $dataE = $ano."-".$mes."-".$diaE;
+    if($diaE > 30){
+
+       $mesE = $mes + 1;
+
+       $dda = $dia / 10;
+
+       $dde = $diaE / 10;
+
+       $nfda=  explode(".", $dda);
+
+       $nfde=  explode(".", $dde);
+
+       $diaEE = $nfda[1] - $nfde[1];
+
+       $dataE = $ano."-".$mesE."-".$diaEE;
+
+     }
+
+    }
+if($mes == '5'){
+
+  $diaE = $dia + 7;
+
+  $dataE = $ano."-".$mes."-".$diaE;
+    if($diaE > 31){
+
+       $mesE = $mes + 1;
+
+       $dda = $dia / 10;
+
+       $dde = $diaE / 10;
+
+       $nfda=  explode(".", $dda);
+
+       $nfde=  explode(".", $dde);
+
+       $diaEE = $nfda[1] - $nfde[1];
+
+       $dataE = $ano."-".$mesE."-".$diaEE;
+
+     }
+
+    }
+if($mes == '6'){
+
+  $diaE = $dia + 7;
+
+  $dataE = $ano."-".$mes."-".$diaE;
+    if($diaE > 30){
+
+       $mesE = $mes + 1;
+
+       $dda = $dia / 10;
+
+       $dde = $diaE / 10;
+
+       $nfda=  explode(".", $dda);
+
+       $nfde=  explode(".", $dde);
+
+       $diaEE = $nfda[1] - $nfde[1];
+
+       $dataE = $ano."-".$mesE."-".$diaEE;
+
+      }
+
+    }
+if($mes == '7'){
+
+  $diaE = $dia + 7;
+
+  $dataE = $ano."-".$mes."-".$diaE;
+    if($diaE > 31){
+
+       $mesE = $mes + 1;
+
+       $dda = $dia / 10;
+
+       $dde = $diaE / 10;
+
+       $nfda=  explode(".", $dda);
+
+       $nfde=  explode(".", $dde);
+
+       $diaEE = $nfda[1] - $nfde[1];
+
+       $dataE = $ano."-".$mesE."-".$diaEE;
+
+     }
+    
+    }
+
+if($mes == '8'){
+
+  $diaE = $dia + 7;
+
+  $dataE = $ano."-".$mes."-".$diaE;
+    if($diaE > 31){
+
+       $mesE = $mes + 1;
+
+       $dda = $dia / 10;
+
+       $dde = $diaE / 10;
+
+       $nfda=  explode(".", $dda);
+
+       $nfde=  explode(".", $dde);
+
+       $diaEE = $nfda[1] - $nfde[1];
+
+       $dataE = $ano."-".$mesE."-".$diaEE;
+
+      }
+
+    }
+if($mes == '9'){
+
+  $diaE = $dia + 7;
+
+  $dataE = $ano."-".$mes."-".$diaE;
+    if($diaE > 30){
+
+       $mesE = $mes + 1;
+
+       $dda = $dia / 10;
+
+       $dde = $diaE / 10;
+
+       $nfda=  explode(".", $dda);
+
+       $nfde=  explode(".", $dde);
+
+       $diaEE = $nfda[1] - $nfde[1];
+
+       $dataE = $ano."-".$mesE."-".$diaEE;
+
+      }
+
+    }
+if($mes == '10'){
+
+  $diaE = $dia + 7;
+
+  $dataE = $ano."-".$mes."-".$diaE;
+    if($diaE > 31){
+
+       $mesE = $mes + 1;
+
+       $dda = $dia / 10;
+
+       $dde = $diaE / 10;
+
+       $nfda=  explode(".", $dda);
+
+       $nfde=  explode(".", $dde);
+
+       $diaEE = $nfda[1] - $nfde[1];
+
+       $dataE = $ano."-".$mesE."-".$diaEE;
+
+      }
+
+    }
+if($mes == '11'){
+
+  $diaE = $dia + 7;
+
+  $dataE = $ano."-".$mes."-".$diaE;
+    if($diaE > 30){
+
+       $mesE = $mes + 1;
+
+       $dda = $dia / 10;
+
+       $dde = $diaE / 10;
+
+       $nfda=  explode(".", $dda);
+
+       $nfde=  explode(".", $dde);
+
+       $diaEE = $nfda[1] - $nfde[1];
+
+       $dataE = $ano."-".$mesE."-".$diaEE;
+
+
+
+      }
+
+    }
+if($mes == '12'){
+
+  $diaE = $dia + 7;
+
+  $dataE = $ano."-".$mes."-".$diaE;
+
+    if($diaE > 31){
+
+       $mesE = $mes + 1;
+
+       $dda = $dia / 10;
+
+       $dde = $diaE / 10;
+
+       $nfda=  explode(".", $dda);
+
+       $nfde=  explode(".", $dde);
+
+       $diaEE = $nfda[1] - $nfde[1];
+
+       $dataE = $ano."-".$mesE."-".$diaEE;
+
+    }
+  }
 
 $sql = "SELECT * FROM reserva";
 
@@ -223,18 +518,6 @@ if($nomeL == $d['nome_Livro']){
                   </div>
                 </div>
               </div>
-              <div class="form-group">
-                <div class="form-row">
-                  <div class="col-md-6">
-                    <label for="exampleInputPassword1">Data Retirada</label>
-                    <input class="form-control" id="exampleInputDataR" name="dataR" type="text" placeholder="  /  /    " maxlength="10" minlength="10">
-                  </div>
-                  <div class="col-md-6">
-                    <label for="exampleInputPassword1">Data Entrega</label>
-                    <input class="form-control" id="exampleInputDataE" name="dataE" type="text" placeholder="  /  /    " maxlength="10" minlength="10">
-                  </div>
-                </div>
-              </div>
               <input class="btn btn-primary btn-block" type="submit" name="Enviar">
             </form>
           </div>
@@ -260,15 +543,15 @@ if($nomeL == $d['nome_Livro']){
       <div class="modal-dialog" role="document">
         <div class="modal-content">
           <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
+            <h5 class="modal-title" id="exampleModalLabel">Pronto para partir?</h5>
             <button class="close" type="button" data-dismiss="modal" aria-label="Close">
               <span aria-hidden="true">×</span>
             </button>
           </div>
-          <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
+          <div class="modal-body">Selecione "Sair" abaixo se você estiver pronto para terminar sua sessão atual.</div>
           <div class="modal-footer">
             <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-            <a class="btn btn-primary" href="login.html">Logout</a>
+            <a class="btn btn-primary" href="login.php">Sair</a>
           </div>
         </div>
       </div>
