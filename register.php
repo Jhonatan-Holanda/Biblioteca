@@ -16,7 +16,6 @@ if(isset($_POST['Enviar'])){
       echo "<script>alert('Funcionário já existe!')</script>";
     }else{
 
-    $sql = "INSERT INTO funcionario (nome_Funcionario, telefone_Funcionario, email_Funcionario, senha_Funcionario) VALUES ('$nome','$telefone','$email','$senha')";
     $query = mysqli_query($con, $sql);
     if($query){
       header('location:login.php');
@@ -46,7 +45,7 @@ if(isset($_POST['Enviar'])){
       <div style="margin: 105px;" class="card card-register mx-auto">
         <div class="card-header"><center>Cadastro</center></div>
         <div class="card-body">
-          <form method="post">
+          <form method="post" action="cadastra_funcionario.php" enctype="multipart/form-data">
             <div class="form-group">
               <div class="form-row">
                 <div class="col-md-6">
@@ -66,6 +65,11 @@ if(isset($_POST['Enviar'])){
             <div class="form-group">
               <label for="exampleInputPassword1">Senha</label>
               <input class="form-control" id="exampleInputPassword1" type="password" placeholder="Senha" name="senha_Funcionario">
+            </div>
+            <div class="form-group">
+                <img class="img-responsive" src="fotosPerfil/<?php echo $img?>" width="80">
+                <label>Imagem de Perfil do Usuário</label>
+                <input class="form-control form-control-file" type="file" name="file">
             </div>
             <button type="submit" class="btn btn-primary form-control" name="Enviar">
                 <span class="glyphicon glyphicon-envelope">Cadastrar</span>
