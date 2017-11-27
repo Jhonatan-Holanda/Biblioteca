@@ -1,13 +1,17 @@
 <!DOCTYPE html>
+  
+ 
 <html lang="en">
 
 <head>
+
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta name="description" content="">
   <meta name="author" content="">
   <title>Biblioteca</title>
+
   <!-- Bootstrap core CSS-->
   <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
   <!-- Custom fonts for this template-->
@@ -16,6 +20,169 @@
   <link href="vendor/datatables/dataTables.bootstrap4.css" rel="stylesheet">
   <!-- Custom styles for this template-->
   <link href="css/sb-admin.css" rel="stylesheet">
+  <!-- Criação do grafico livros alugados no ano-->
+  
+<?php
+         
+ error_reporting();
+            define("HOST", "localhost");
+            define("USER","root");
+            define("PASS", "");
+            define("DB", "biblioteca");
+
+            $con = mysqli_connect(HOST, USER, PASS) or die("Não foi possível Conectar!");
+            $banco = mysqli_select_db($con, DB);
+            $sql = "SELECT * FROM livrosalugados";
+            $query = mysqli_query($con, $sql);
+            //$i = mysqli_num_rows($query);
+            $t = array();
+            $q = array();
+            $a = 0;
+
+
+            while ($d = mysqli_fetch_assoc($query)) {
+              $t = $d['mes'];
+              $q = $d['livalugados'];
+              $ts[$a] = $t;
+              $qs[$a] = $q;
+              $a++; 
+            }
+
+          ?>
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+      google.charts.load('current', {'packages':['corechart']});
+      google.charts.setOnLoadCallback(drawChart);
+
+      google.charts.load('current', {'packages':['bar']});
+      google.charts.setOnLoadCallback(drawStuff);
+
+       function drawStuff() {
+        var data = new google.visualization.arrayToDataTable([
+          ['Mês', 'quantidade alugada'],
+
+          <?php
+           error_reporting();
+
+          $i = $a;
+          for ($i = 0; $i < $a; $i++) {
+
+          ?>
+
+           ['<?php echo $ts[$i]?>', <?php echo $qs[$i]?>],
+
+          <?php
+            }
+          ?>
+
+        ]);
+
+        var options = {
+          width: 800,
+          legend: { position: 'none' },
+          chart: {
+            title: '',
+            subtitle: 'Quantidade'},
+          axes: {
+            x: {
+              0: { side: 'bottom', label: 'Mês'} // Top x-axis.
+            }
+          },
+          bar: { groupWidth: "90%" }
+        };
+
+        var chart = new google.charts.Bar(document.getElementById('top'));
+        // Convert the Classic options to Material options.
+        chart.draw(data, google.charts.Bar.convertOptions(options));
+      };
+
+      function drawChart() {
+
+
+        chart.draw(data, options);
+      }
+    </script>
+
+<!-- tabelas salas-->
+ <?php
+   error_reporting();
+   
+
+            $con = mysqli_connect(HOST, USER, PASS) or die("Não foi possível Conectar!");
+            $banco = mysqli_select_db($con, DB);
+
+            $sql = "SELECT * FROM reservas";
+            $query = mysqli_query($con, $sql);
+            //$i = mysqli_num_rows($query);
+            $t = array();
+            $q = array();
+            $a = 0;
+
+
+            while ($d = mysqli_fetch_assoc($query)) {
+              $t = $d['turma'];
+              $q = $d['qnt'];
+              $ts[$a] = $t;
+              $qs[$a] = $q;
+              $a++; 
+            }
+
+          ?>
+
+ <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+      google.charts.load('current', {'packages':['corechart']});
+      google.charts.setOnLoadCallback(drawChart);
+
+      google.charts.load('current', {'packages':['bar']});
+      google.charts.setOnLoadCallback(drawStuff);
+
+       function drawStuff() {
+        var data = new google.visualization.arrayToDataTable([
+          ['Turma', 'Porcentagem'],
+
+          <?php
+  error_reporting();
+          $i = $a;
+          for ($i = 0; $i < $a; $i++) {
+
+          ?>
+
+           ['<?php echo $ts[$i]?>', <?php echo $qs[$i]?>],
+
+          <?php
+            }
+          ?>
+
+        ]);
+
+        var options = {
+          width: 800,
+          legend: { position: 'none' },
+          chart: {
+            title: 'Reservas',
+            subtitle: 'Turmas'},
+          axes: {
+            x: {
+              0: { side: 'bottom', label: 'Turma Destaque'} // Top x-axis.
+            }
+          },
+          bar: { groupWidth: "90%" }
+        };
+
+        var chart = new google.charts.Bar(document.getElementById('salas'));
+        // Convert the Classic options to Material options.
+        chart.draw(data, google.charts.Bar.convertOptions(options));
+      };
+
+      function drawChart() {
+
+      
+
+        chart.draw(data, options);
+      }
+    </script>
+
 </head>
 
 <body class="fixed-nav sticky-footer bg-dark" id="page-top">
@@ -66,63 +233,14 @@
             <span class="nav-link-text">Funcionarios</span>
           </a>
         </li>
-        <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Example Pages">
-          <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#collapseExamplePages" data-parent="#exampleAccordion">
-            <i class="fa fa-fw fa-list"></i>
-            <span class="nav-link-text">Categorias</span>
-          </a>
-          <ul class="sidenav-second-level collapse" id="collapseExamplePages">
-            <li>
-              <a href="login.html">Ação</a>
-            </li>
-            <li>
-              <a href="register.html">Aventura</a>
-            </li>
-            <li>
-              <a href="forgot-password.html">Comedia</a>
-            </li>
-            <li>
-              <a href="blank.html"></a>
-            </li>
-          </ul>
-        </li>
-        <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Menu Levels">
-          <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#collapseMulti" data-parent="#exampleAccordion">
-            <i class="fa fa-fw fa-sitemap"></i>
-            <span class="nav-link-text">Menu Levels</span>
-          </a>
-          <ul class="sidenav-second-level collapse" id="collapseMulti">
-            <li>
-              <a href="#">Second Level Item</a>
-            </li>
-            <li>
-              <a href="#">Second Level Item</a>
-            </li>
-            <li>
-              <a href="#">Second Level Item</a>
-            </li>
-            <li>
-              <a class="nav-link-collapse collapsed" data-toggle="collapse" href="#collapseMulti2">Third Level</a>
-              <ul class="sidenav-third-level collapse" id="collapseMulti2">
-                <li>
-                  <a href="#">Third Level Item</a>
-                </li>
-                <li>
-                  <a href="#">Third Level Item</a>
-                </li>
-                <li>
-                  <a href="#">Third Level Item</a>
-                </li>
+        
+     
+              
               </ul>
             </li>
           </ul>
         </li>
-        <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Link">
-          <a class="nav-link" href="#">
-            <i class="fa fa-fw fa-link"></i>
-            <span class="nav-link-text">Link</span>
-          </a>
-        </li>
+        
       </ul>
       <ul class="navbar-nav sidenav-toggler">
         <li class="nav-item">
@@ -144,43 +262,48 @@
       <!-- Breadcrumbs-->
       <ol class="breadcrumb">
         <li class="breadcrumb-item">
-          <a href="#">Dashboard</a>
+          <a href="#">Área de Trabalho</a>
         </li>
-        <li class="breadcrumb-item active">My Dashboard</li>
+        <li class="breadcrumb-item active">Biblioteca Virtual</li>
       </ol>
       <!-- Area Chart Example-->
       <div class="card mb-3">
         <div class="card-header">
-          <i class="fa fa-area-chart"></i> Area Chart Example</div>
+          <i class="fa fa-area-chart"></i> Livros alugados em cada mês:</div>
         <div class="card-body">
-          <canvas id="myAreaChart" width="100%" height="30"></canvas>
+           <div id="top" style="width: 100%; height: 30;"></div>
+          <!-- <canvas id="myAreaChart" width="100%" height="30"></canvas> -->
         </div>
-        <div class="card-footer small text-muted">Updated yesterday at 11:59 PM</div>
+        <div class="card-footer small text-muted">Grafico de 2016</div>
       </div>
       <div class="row">
         <div class="col-lg-12">
           <!-- Example Bar Chart Card-->
           <div class="card mb-3">
             <div class="card-header">
-              <i class="fa fa-bar-chart"></i> Bar Chart Example</div>
+              <i class="fa fa-bar-chart"></i> Salas que mais alugaram livros:</div>
             <div class="card-body">
               <div class="row">
                 <div class="col-sm-8 my-auto">
-                  <canvas id="myBarChart" width="100" height="50"></canvas>
+                         <div id="salas" style="width: 100%; height: 50;"></div>
+                
                 </div>
                 <div class="col-sm-4 text-center my-auto">
-                  <div class="h4 mb-0 text-primary">$34,693</div>
-                  <div class="small text-muted">YTD Revenue</div>
+                  <div class="h4 mb-0 text-primary">INFO</div>
+                  <div class="small text-muted">Informática</div>
                   <hr>
-                  <div class="h4 mb-0 text-warning">$18,474</div>
-                  <div class="small text-muted">YTD Expenses</div>
+                  <div class="h4 mb-0 text-success">ADM</div>
+                  <div class="small text-muted">Administração</div>
                   <hr>
-                  <div class="h4 mb-0 text-success">$16,219</div>
-                  <div class="small text-muted">YTD Margin</div>
+                  <div class="h4 mb-0 text-primary">COM</div>
+                  <div class="small text-muted">Comércio</div>
+                  <hr>
+                  <div class="h4 mb-0 text-success">AGRO</div>
+                  <div class="small text-muted">Agronegócio</div>
                 </div>
               </div>
             </div>
-            <div class="card-footer small text-muted">Updated yesterday at 11:59 PM</div>
+            <div class="card-footer small text-muted">Grafico de 2016</div>
           </div>
           <!-- /Card Columns-->
         </div>
