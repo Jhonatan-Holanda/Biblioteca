@@ -1,6 +1,8 @@
+<?php
+require("conta.php");
+require("conta_mes.php");
+?>
 <!DOCTYPE html>
-  
- 
 <html lang="en">
 
 <head>
@@ -25,13 +27,7 @@
 <?php
          
  error_reporting();
-            define("HOST", "localhost");
-            define("USER","root");
-            define("PASS", "");
-            define("DB", "biblioteca");
-
-            $con = mysqli_connect(HOST, USER, PASS) or die("Não foi possível Conectar!");
-            $banco = mysqli_select_db($con, DB);
+            date_default_timezone_set("America/Fortaleza");
             $sql = "SELECT * FROM livrosalugados";
             $query = mysqli_query($con, $sql);
             //$i = mysqli_num_rows($query);
@@ -211,6 +207,9 @@
             <li>
               <a href="mostra_reserva.php">Mostra Reserva</a>
             </li>
+            <li>
+              <a href="atrasados.php">Mostra Atrasados</a>
+            </li>
           </ul>
         </li>
         <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Tables">
@@ -220,7 +219,7 @@
           </a>
           <ul class="sidenav-second-level collapse" id="collapseExampleBooks">
             <li>
-              <a href="tables.html">Mostra Livros</a>
+              <a href="tables.php">Mostra Livros</a>
             </li>
             <li>
               <a href="cadastra_livro.php">Cadastra Livros</a>
@@ -233,14 +232,6 @@
             <span class="nav-link-text">Funcionarios</span>
           </a>
         </li>
-        
-     
-              
-              </ul>
-            </li>
-          </ul>
-        </li>
-        
       </ul>
       <ul class="navbar-nav sidenav-toggler">
         <li class="nav-item">
@@ -325,15 +316,15 @@
       <div class="modal-dialog" role="document">
         <div class="modal-content">
           <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
+            <h5 class="modal-title" id="exampleModalLabel">Pronto para partir?</h5>
             <button class="close" type="button" data-dismiss="modal" aria-label="Close">
               <span aria-hidden="true">×</span>
             </button>
           </div>
-          <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
+          <div class="modal-body">Selecione "Sair" abaixo se você estiver pronto para terminar sua sessão atual.</div>
           <div class="modal-footer">
             <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-            <a class="btn btn-primary" href="login.html">Logout</a>
+            <a class="btn btn-primary" href="login.php">Sair</a>
           </div>
         </div>
       </div>
