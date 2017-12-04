@@ -1,6 +1,7 @@
 <?php
 
 require("conexao.php");
+
 $prod_id = $_GET['prod_id'];
 
 $sql = "SELECT * FROM livro WHERE codigo_Livro = '$prod_id'";
@@ -9,6 +10,8 @@ while ($dados = mysqli_fetch_assoc($query)) {
   $nome = $dados['nome_Livro'];
   $genero = $dados['genero_Livro'];
   $autor = $dados['autor_Livro'];
+  $p = $dados['pratileira_Livro'];
+  $fila = $dados['fila_Livro'];
 }
 
 ?>
@@ -56,17 +59,28 @@ while ($dados = mysqli_fetch_assoc($query)) {
           </a>
         </li>
         <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Charts">
-          <a class="nav-link" href="reserva.php">
+          <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#collapseExampleReservas" data-parent="#exampleAccordion">
             <i class="fa fa-fw fa-edit"></i>
-            <span class="nav-link-text">Reserva</span>
+            <span class="nav-link-text">Reservas</span>
           </a>
+          <ul class="sidenav-second-level collapse" id="collapseExampleReservas">
+            <li>
+              <a href="reserva.php">Reserva Livro</a>
+            </li>
+            <li>
+              <a href="mostra_reserva.php">Mostra Reserva</a>
+            </li>
+            <li>
+              <a href="atrasados.php">Mostra Atrasados</a>
+            </li>
+          </ul>
         </li>
         <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Tables">
-          <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#collapseExamplePages" data-parent="#exampleAccordion">
+          <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#collapseExampleBooks" data-parent="#exampleAccordion">
             <i class="fa fa-fw fa-book"></i>
             <span class="nav-link-text">Livros</span>
           </a>
-          <ul class="sidenav-second-level collapse" id="collapseExamplePages">
+          <ul class="sidenav-second-level collapse" id="collapseExampleBooks">
             <li>
               <a href="tables.php">Mostra Livros</a>
             </li>
@@ -79,32 +93,6 @@ while ($dados = mysqli_fetch_assoc($query)) {
           <a class="nav-link " href="funcionarios.php">
             <i class="fa fa-fw fa-user"></i>
             <span class="nav-link-text">Funcionarios</span>
-          </a>
-        </li>
-        <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Categorias">
-          <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#collapseCategorias" data-parent="#exampleAccordion">
-            <i class="fa fa-fw fa-list"></i>
-            <span class="nav-link-text">Categorias</span>
-          </a>
-          <ul class="sidenav-second-level collapse" id="collapseCategorias">
-            <li>
-              <a href="#">Ação</a>
-            </li>
-            <li>
-              <a href="#">Aventura</a>
-            </li>
-            <li>
-              <a href="#">Comedia</a>
-            </li>
-            <li>
-              <a href="#"></a>
-            </li>
-          </ul>
-        </li>
-        <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Link">
-          <a class="nav-link" href="#">
-            <i class="fa fa-fw fa-link"></i>
-            <span class="nav-link-text">Link</span>
           </a>
         </li>
       </ul>
@@ -128,7 +116,7 @@ while ($dados = mysqli_fetch_assoc($query)) {
         <div class="card card-register m">
           <div class="card-header n"><center>Mudar Informações do Livro</center></div>
           <div class="card-body t">
-            <form action="atualizar_livro.php?prod_id=<?php echo $prod_id;?>" method="post">
+            <form enctype="multipart/form-data" action="modificar_livro.php?prod_id=<?php echo $prod_id;?>" method="post">
               <div class="form-group">
                 <div class="form-row">
                   <div class="col-md-12">
@@ -146,6 +134,30 @@ while ($dados = mysqli_fetch_assoc($query)) {
                   <div class="col-md-12">
                     <label for="exampleInputName">Autor da Obra</label>
                     <input class="form-control" id="exampleInputName" type="text" name="autor_Livro" placeholder="Autor da Obra" value="<?php echo $autor; ?>">
+                  </div>
+                </div>
+              </div>
+               <div class="form-group">
+                <div class="form-row">
+                  <div class="col-md-12">
+                    <label for="exampleInputName">Prateleira Livro</label>
+                    <input class="form-control" id="exampleInputName" type="text" name="pratileira_Livro" placeholder="Prateleira do Livro" value="<?php echo $p; ?>">
+                  </div>
+                </div>
+              </div>
+               <div class="form-group">
+                <div class="form-row">
+                  <div class="col-md-12">
+                    <label for="exampleInputName">Fila Livro</label>
+                    <input class="form-control" id="exampleInputName" type="text" name="fila_Livro" placeholder="Fila do Livro" value="<?php echo $fila; ?>">
+                  </div>
+                </div>
+              </div>
+              <div class="form-group">
+                <div class="form-row">
+                  <div class="col-md-12">
+                    <label for="exampleInputName">Capa Livro</label>
+                    <input class="form-control" type="file" name="file">
                   </div>
                 </div>
               </div>
