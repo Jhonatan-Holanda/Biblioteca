@@ -2,11 +2,12 @@
 require("conexao.php");
 
 if(isset($_GET['Enviar'])){
-
+date_default_timezone_set('America/Fortaleza');
 $nomeL = $_GET['nomeL'];
 $nomeP = $_GET['nomeP'];
 $end = $_GET['end'];
 $email = $_GET['email'];
+$curso = $_GET['curso'];
 $dia = date('d');
 $mes = date('m');
 $ano = date('Y');
@@ -23,15 +24,7 @@ if($mes == '1'){
 
        $mesE = $mes + 1;
 
-       $dda = $dia / 10;
-
-       $dde = $diaE / 10;
-
-       $nfda=  explode(".", $dda);
-
-       $nfde=  explode(".", $dde);
-
-       $diaEE = $nfda[1] - $nfde[1];
+       $diaEE = $diaE - 31;
 
        $dataE = $ano."-".$mesE."-".$diaEE;
   }
@@ -46,15 +39,7 @@ if($mes == '2'){
 
        $mesE = $mes + 1;
 
-       $dda = $dia / 10;
-
-       $dde = $diaE / 10;
-
-       $nfda=  explode(".", $dda);
-
-       $nfde=  explode(".", $dde);
-
-       $diaEE = $nfda[1] - $nfde[1];
+        $diaEE = $diaE - 28;
 
        $dataE = $ano."-".$mesE."-".$diaEE;
 
@@ -70,15 +55,7 @@ if($mes == '3'){
 
        $mesE = $mes + 1;
 
-       $dda = $dia / 10;
-
-       $dde = $diaE / 10;
-
-       $nfda=  explode(".", $dda);
-
-       $nfde=  explode(".", $dde);
-
-       $diaEE = $nfda[1] - $nfde[1];
+       $diaEE = $diaE - 31;
 
        $dataE = $ano."-".$mesE."-".$diaEE;
 
@@ -94,15 +71,7 @@ if($mes == '4'){
 
        $mesE = $mes + 1;
 
-       $dda = $dia / 10;
-
-       $dde = $diaE / 10;
-
-       $nfda=  explode(".", $dda);
-
-       $nfde=  explode(".", $dde);
-
-       $diaEE = $nfda[1] - $nfde[1];
+       $diaEE = $diaE - 30;
 
        $dataE = $ano."-".$mesE."-".$diaEE;
 
@@ -118,15 +87,7 @@ if($mes == '5'){
 
        $mesE = $mes + 1;
 
-       $dda = $dia / 10;
-
-       $dde = $diaE / 10;
-
-       $nfda=  explode(".", $dda);
-
-       $nfde=  explode(".", $dde);
-
-       $diaEE = $nfda[1] - $nfde[1];
+       $diaEE = $diaE - 31;
 
        $dataE = $ano."-".$mesE."-".$diaEE;
 
@@ -142,15 +103,7 @@ if($mes == '6'){
 
        $mesE = $mes + 1;
 
-       $dda = $dia / 10;
-
-       $dde = $diaE / 10;
-
-       $nfda=  explode(".", $dda);
-
-       $nfde=  explode(".", $dde);
-
-       $diaEE = $nfda[1] - $nfde[1];
+       $diaEE = $diaE - 30;
 
        $dataE = $ano."-".$mesE."-".$diaEE;
 
@@ -166,15 +119,7 @@ if($mes == '7'){
 
        $mesE = $mes + 1;
 
-       $dda = $dia / 10;
-
-       $dde = $diaE / 10;
-
-       $nfda=  explode(".", $dda);
-
-       $nfde=  explode(".", $dde);
-
-       $diaEE = $nfda[1] - $nfde[1];
+       $diaEE = $diaE - 31;
 
        $dataE = $ano."-".$mesE."-".$diaEE;
 
@@ -191,15 +136,7 @@ if($mes == '8'){
 
        $mesE = $mes + 1;
 
-       $dda = $dia / 10;
-
-       $dde = $diaE / 10;
-
-       $nfda=  explode(".", $dda);
-
-       $nfde=  explode(".", $dde);
-
-       $diaEE = $nfda[1] - $nfde[1];
+       $diaEE = $diaE - 31;
 
        $dataE = $ano."-".$mesE."-".$diaEE;
 
@@ -215,15 +152,7 @@ if($mes == '9'){
 
        $mesE = $mes + 1;
 
-       $dda = $dia / 10;
-
-       $dde = $diaE / 10;
-
-       $nfda=  explode(".", $dda);
-
-       $nfde=  explode(".", $dde);
-
-       $diaEE = $nfda[1] - $nfde[1];
+       $diaEE = $diaE - 30;
 
        $dataE = $ano."-".$mesE."-".$diaEE;
 
@@ -239,15 +168,7 @@ if($mes == '10'){
 
        $mesE = $mes + 1;
 
-       $dda = $dia / 10;
-
-       $dde = $diaE / 10;
-
-       $nfda=  explode(".", $dda);
-
-       $nfde=  explode(".", $dde);
-
-       $diaEE = $nfda[1] - $nfde[1];
+       $diaEE = $diaE - 31;
 
        $dataE = $ano."-".$mesE."-".$diaEE;
 
@@ -263,15 +184,7 @@ if($mes == '11'){
 
        $mesE = $mes + 1;
 
-       $dda = $dia / 10;
-
-       $dde = $diaE / 10;
-
-       $nfda=  explode(".", $dda);
-
-       $nfde=  explode(".", $dde);
-
-       $diaEE = $nfda[1] - $nfde[1];
+       $diaEE = $diaE - 30;
 
        $dataE = $ano."-".$mesE."-".$diaEE;
 
@@ -288,46 +201,44 @@ if($mes == '12'){
 
     if($diaE > 31){
 
-       $mesE = $mes + 1;
+       $mesE = 1;
 
-       $dda = $dia / 10;
+       $anoP = $ano + 1;
 
-       $dde = $diaE / 10;
+       $diaEE = $diaE - 31;
 
-       $nfda=  explode(".", $dda);
-
-       $nfde=  explode(".", $dde);
-
-       $diaEE = $nfda[1] - $nfde[1];
-
-       $dataE = $ano."-".$mesE."-".$diaEE;
+       $dataE = $anoP."-".$mesE."-".$diaEE;
 
     }
   }
 
-$sql = "SELECT * FROM reserva";
+$sql = "SELECT * FROM livro WHERE nome_Livro = '".$nomeL."'";
+$query = mysqli_query($con, $sql);
 
-$query = mysqli_query($con,$sql);
+// $d= mysqli_fetch_assoc($query);
 
-$d = mysqli_fetch_assoc($query);
+if($query){
 
-if($nomeL == $d['nome_Livro']){
-  echo "<script>alert('Reserva já existente')</script>";
-}else{
+    if(mysqli_num_rows($query) == 0){
 
-    $sql = "INSERT INTO reserva (nome_Livro, nome_Pessoa, endereco_Pessoa,email_Pessoa, data_Recebimento, data_Entrega) VALUES ('$nomeL','$nomeP','$end','$email','$dataR','$dataE')";
+        echo "<script>alert('Livro Não Esta no Sistema')</script>";
 
-    $query = mysqli_query($con,$sql);
-
-    if($query){
-        header('location:mostra_reserva.php');
-        echo "<script>alert('Livro Reservado')</script>";
-        
     }else{
-        echo "<script>alert('Livro Não Reservado')</script>";
-    }
+        $sql = "INSERT INTO reserva (nome_Livro, nome_Pessoa, endereco_Pessoa, email_Pessoa, curso_Pessoa, mes, data_Recebimento, data_Entrega) VALUES ('$nomeL','$nomeP','$end','$email','$curso','$mes', '$dataR','$dataE')";
 
-  }
+        $query = mysqli_query($con,$sql);
+
+        if($query){
+              echo "<script>alert('Livro Reservado $nomeL')</script>";
+             header('location:mostra_reserva.php');
+        }else{
+            echo "<script>alert('Livro Não Reservado')</script>";
+        }
+    }
+}else{
+  echo "<script>alert('Livro Não Reservado else')</script>";
+}
+
 }
 ?>
 <!DOCTYPE html>
@@ -389,6 +300,9 @@ if($nomeL == $d['nome_Livro']){
             <li>
               <a href="mostra_reserva.php">Mostra Reserva</a>
             </li>
+            <li>
+              <a href="atrasados.php">Mostra Atrasados</a>
+            </li>
           </ul>
         </li>
         <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Tables">
@@ -398,7 +312,7 @@ if($nomeL == $d['nome_Livro']){
           </a>
           <ul class="sidenav-second-level collapse" id="collapseExampleBooks">
             <li>
-              <a href="tables.html">Mostra Livros</a>
+              <a href="tables.php">Mostra Livros</a>
             </li>
             <li>
               <a href="cadastra_livro.php">Cadastra Livros</a>
@@ -409,63 +323,6 @@ if($nomeL == $d['nome_Livro']){
           <a class="nav-link " href="funcionarios.php">
             <i class="fa fa-fw fa-user"></i>
             <span class="nav-link-text">Funcionarios</span>
-          </a>
-        </li>
-        <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Example Pages">
-          <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#collapseExamplePages" data-parent="#exampleAccordion">
-            <i class="fa fa-fw fa-list"></i>
-            <span class="nav-link-text">Categorias</span>
-          </a>
-          <ul class="sidenav-second-level collapse" id="collapseExamplePages">
-            <li>
-              <a href="login.html">Ação</a>
-            </li>
-            <li>
-              <a href="register.html">Aventura</a>
-            </li>
-            <li>
-              <a href="forgot-password.html">Comedia</a>
-            </li>
-            <li>
-              <a href="blank.html"></a>
-            </li>
-          </ul>
-        </li>
-        <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Menu Levels">
-          <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#collapseMulti" data-parent="#exampleAccordion">
-            <i class="fa fa-fw fa-sitemap"></i>
-            <span class="nav-link-text">Menu Levels</span>
-          </a>
-          <ul class="sidenav-second-level collapse" id="collapseMulti">
-            <li>
-              <a href="#">Second Level Item</a>
-            </li>
-            <li>
-              <a href="#">Second Level Item</a>
-            </li>
-            <li>
-              <a href="#">Second Level Item</a>
-            </li>
-            <li>
-              <a class="nav-link-collapse collapsed" data-toggle="collapse" href="#collapseMulti2">Third Level</a>
-              <ul class="sidenav-third-level collapse" id="collapseMulti2">
-                <li>
-                  <a href="#">Third Level Item</a>
-                </li>
-                <li>
-                  <a href="#">Third Level Item</a>
-                </li>
-                <li>
-                  <a href="#">Third Level Item</a>
-                </li>
-              </ul>
-            </li>
-          </ul>
-        </li>
-        <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Link">
-          <a class="nav-link" href="#">
-            <i class="fa fa-fw fa-link"></i>
-            <span class="nav-link-text">Link</span>
           </a>
         </li>
       </ul>
@@ -515,6 +372,14 @@ if($nomeL == $d['nome_Livro']){
                   <div class="col-md-12">
                     <label for="exampleInputPassword1">Email Pessoa</label>
                     <input class="form-control" id="exampleInputEmail" type="email" name="email" placeholder="exemplo@seudominio.com">
+                  </div>
+                </div>
+              </div>
+              <div class="form-group">
+                <div class="form-row">
+                  <div class="col-md-12">
+                    <label for="exampleInputPassword1">Curso</label>
+                    <input class="form-control" id="exampleInputEmail" type="text" name="curso" placeholder="Informe seu curso">
                   </div>
                 </div>
               </div>
