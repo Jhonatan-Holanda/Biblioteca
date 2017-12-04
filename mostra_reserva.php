@@ -1,30 +1,5 @@
 <?php
         require ("conexao.php");
-        require 'vendor/autoload.php';
-
-        $sql = "SELECT * FROM reserva";
-        $query = mysqli_query($con,$sql);
-
-        $d=mysqli_fetch_assoc($query);
-
-        if(date('Y/m/d') > $d['data_Entrega']){
-         
-        $from = new SendGrid\Email(null, "jhonatan_holanda@hotmail.com");
-        $subject = "Livro Atrasado";
-        $to = new SendGrid\Email(null, $d['email_Pessoa']);
-        $content = new SendGrid\Content("text/html", "Olá, <br><br>Sua data de Entrega do Livro esta atrasada por favor Devolva!!");
-        $mail = new SendGrid\Mail($from, $subject, $to, $content);
-        
-        //Necessário inserir a chave
-        $apiKey = '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';
-        $sg = new \SendGrid($apiKey);
-
-        $response = $sg->client->mail()->send()->post($mail);
-        // echo "<script>alert('Mensagem Enviada com succeso')</script>";
-        echo "<script>alert('".$d['email_Pessoa']."')</script>";
-      }else{
-        echo"<script>alert('Nenhum livro atrasado')</script>";
-      }
 ?>
 
 <!DOCTYPE html>
@@ -47,17 +22,15 @@
   <link href="css/sb-admin.css" rel="stylesheet">
   <style type="text/css">
       .q{
-        background: white;
         color: black;
         border-radius: 5px;
       }
       .t{
-        background:white;
+       background: #f7f7f7;
         color: black;
       }
       .a{
-        background: #212529;
-        color: white
+        color: black;
       }
   </style>
 </head>
@@ -88,6 +61,9 @@
             <li>
               <a href="mostra_reserva.php">Mostra Reserva</a>
             </li>
+            <li>
+              <a href="atrasados.php">Mostra Atrasados</a>
+            </li>
           </ul>
         </li>
         <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Tables">
@@ -97,7 +73,7 @@
           </a>
           <ul class="sidenav-second-level collapse" id="collapseExampleBooks">
             <li>
-              <a href="tables.html">Mostra Livros</a>
+              <a href="tables.php">Mostra Livros</a>
             </li>
             <li>
               <a href="cadastra_livro.php">Cadastra Livros</a>
@@ -108,63 +84,6 @@
           <a class="nav-link " href="funcionarios.php">
             <i class="fa fa-fw fa-user"></i>
             <span class="nav-link-text">Funcionarios</span>
-          </a>
-        </li>
-        <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Example Pages">
-          <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#collapseExamplePages" data-parent="#exampleAccordion">
-            <i class="fa fa-fw fa-list"></i>
-            <span class="nav-link-text">Categorias</span>
-          </a>
-          <ul class="sidenav-second-level collapse" id="collapseExamplePages">
-            <li>
-              <a href="login.html">Ação</a>
-            </li>
-            <li>
-              <a href="register.html">Aventura</a>
-            </li>
-            <li>
-              <a href="forgot-password.html">Comedia</a>
-            </li>
-            <li>
-              <a href="blank.html"></a>
-            </li>
-          </ul>
-        </li>
-        <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Menu Levels">
-          <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#collapseMulti" data-parent="#exampleAccordion">
-            <i class="fa fa-fw fa-sitemap"></i>
-            <span class="nav-link-text">Menu Levels</span>
-          </a>
-          <ul class="sidenav-second-level collapse" id="collapseMulti">
-            <li>
-              <a href="#">Second Level Item</a>
-            </li>
-            <li>
-              <a href="#">Second Level Item</a>
-            </li>
-            <li>
-              <a href="#">Second Level Item</a>
-            </li>
-            <li>
-              <a class="nav-link-collapse collapsed" data-toggle="collapse" href="#collapseMulti2">Third Level</a>
-              <ul class="sidenav-third-level collapse" id="collapseMulti2">
-                <li>
-                  <a href="#">Third Level Item</a>
-                </li>
-                <li>
-                  <a href="#">Third Level Item</a>
-                </li>
-                <li>
-                  <a href="#">Third Level Item</a>
-                </li>
-              </ul>
-            </li>
-          </ul>
-        </li>
-        <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Link">
-          <a class="nav-link" href="#">
-            <i class="fa fa-fw fa-link"></i>
-            <span class="nav-link-text">Link</span>
           </a>
         </li>
       </ul>
@@ -190,10 +109,9 @@
         <div class="col-lg-12">
           <!-- Example Bar Chart Card-->
           <div class="card mb-3">
-        <div class="card-header a">
-          <center><i class="fa fa-table"></i> Reservas</center></div>
         <div class="t card-body">
           <div class="table-responsive">
+             <center><i class="fa fa-table"></i> Reservas</center></div>
             <table class="q table " id="dataTable" width="100%" cellspacing="0">
               <thead>
                 <tr>
@@ -203,6 +121,7 @@
                   <th>Email Pessoa</th>
                   <th>Data Recebimento</th>
                   <th>Data Entrega</th>
+                  <th>Remover</th>
                 </tr>
               </thead>
               <tbody>
@@ -221,6 +140,12 @@
                       <td><label>".$dados['email_Pessoa']."</label></td>
                       <td><label>".$dados['data_Recebimento']."</label></td>
                       <td><label>".$dados['data_Entrega']."</label></td>
+                      <td>
+                        <a href='deletar-reserva.php?prod_id=".$dados['id_Reserva']."'>
+                        <button type='submit' class='btn btn-danger'>
+                          <i class='fa fa-trash'></i> Deletar
+                        </button> 
+                        </td>
                     </tr>
                     ";
                     }
@@ -271,7 +196,7 @@
     <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
     <!-- Page level plugin JavaScript-->
     <script src="vendor/chart.js/Chart.min.js"></script>
-    <script src="vendor/datatables/jquery.dataTables.js"></script>
+    <script src="vendor/datatables/jquery.dataTables-1.js"></script>
     <script src="vendor/datatables/dataTables.bootstrap4.js"></script>
     <!-- Custom scripts for all pages-->
     <script src="js/sb-admin.min.js"></script>
